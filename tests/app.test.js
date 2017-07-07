@@ -1,13 +1,11 @@
-const App = require("./../app.js");
-
-
+const App   = require("./../app.js");
 
 describe("Data tests", () => {
 
     /* CONSTRUCTION */
 
     let app;
-    const type = "image/bmp";
+    const type = "image/webp";
 
     beforeAll(() => {
         const canvas = document.createElement("canvas");
