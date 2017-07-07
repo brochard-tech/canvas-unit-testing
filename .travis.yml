@@ -2,6 +2,6 @@ language: node_js
 sudo: required
 os:
   - osx
-before_install: brew install pkg-config cairo pango libpng jpeg giflib
+before_install: brew install pkg-config cairo pango libpng jpeg && brew upgrade giflib
 node_js:
   - "7.0.0"
