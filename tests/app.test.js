@@ -1,11 +1,11 @@
-const App   = require("./../app.js");
+const App       = require("./../app.js");
 
 describe("Data tests", () => {
 
     /* CONSTRUCTION */
 
     let app;
-    const type = "image/webp";
+    const type = "image/svg+xml";
 
     beforeAll(() => {
         const canvas = document.createElement("canvas");
@@ -18,7 +18,6 @@ describe("Data tests", () => {
 
         app = new App();
     });
-
 
     /* LOGIC */
 
@@ -136,8 +135,8 @@ describe("Data tests", () => {
     it("should render the board", (done) => {
         app.start();
 
-        app.canvas.toDataURL(type, (err, jpeg) => {
-            expect(jpeg).toMatchSnapshot();
+        app.canvas.toDataURL(type, (err, base64) => {
+            expect(base64).toMatchSnapshot();
             done();
         });
     });
@@ -149,8 +148,8 @@ describe("Data tests", () => {
         app.fillCell(2 * app.cellWidth, 1 * app.cellHeight, true);
         app.fillCell(1 * app.cellWidth, 2 * app.cellHeight, true);
 
-        app.canvas.toDataURL(type, 1, (err, jpeg) => {
-            expect(jpeg).toMatchSnapshot();
+        app.canvas.toDataURL(type, 1, (err, base64) => {
+            expect(base64).toMatchSnapshot();
             done();
         });
     });
@@ -162,8 +161,8 @@ describe("Data tests", () => {
         app.fillCell(0 * app.cellWidth, 2 * app.cellHeight);
         app.fillCell(2 * app.cellWidth, 2 * app.cellHeight);
 
-        app.canvas.toDataURL(type, 1, (err, jpeg) => {
-            expect(jpeg).toMatchSnapshot();
+        app.canvas.toDataURL(type, 1, (err, base64) => {
+            expect(base64).toMatchSnapshot();
             done();
         });
     });
