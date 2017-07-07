@@ -7,7 +7,7 @@ describe("Data tests", () => {
     /* CONSTRUCTION */
 
     let app;
-    const type = "image/jpeg";
+    const type = "image/png";
 
     beforeAll(() => {
         const canvas = document.createElement("canvas");
