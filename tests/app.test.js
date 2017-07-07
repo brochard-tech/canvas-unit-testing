@@ -7,7 +7,7 @@ describe("Data tests", () => {
     /* CONSTRUCTION */
 
     let app;
-    const type = "image/webp";
+    const type = "image/jpeg";
 
     beforeAll(() => {
         const canvas = document.createElement("canvas");
@@ -135,28 +135,39 @@ describe("Data tests", () => {
 
     /* SNAPSHOTS */
 
-    it("should render the board", () => {
+    it("should render the board", (done) => {
         app.start();
 
-        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
+        app.canvas.toDataURL(type, (err, jpeg) => {
+            expect(jpeg).toMatchSnapshot();
+            done();
+        });
     });
 
-    it("should render crosses on cells selected", () => {
+    it("should render crosses on cells selected", (done) => {
         app.start();
         app.fillCell(1 * app.cellWidth, 0 * app.cellHeight, true);
         app.fillCell(0 * app.cellWidth, 1 * app.cellHeight, true);
         app.fillCell(2 * app.cellWidth, 1 * app.cellHeight, true);
         app.fillCell(1 * app.cellWidth, 2 * app.cellHeight, true);
-        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
+
+        app.canvas.toDataURL(type, 1, (err, jpeg) => {
+            expect(jpeg).toMatchSnapshot();
+            done();
+        });
     });
 
-    it("should fill the empty cells with circles", () => {
+    it("should fill the empty cells with circles", (done) => {
         app.fillCell(0 * app.cellWidth, 0 * app.cellHeight);
         app.fillCell(2 * app.cellWidth, 0 * app.cellHeight);
         app.fillCell(1 * app.cellWidth, 1 * app.cellHeight);
         app.fillCell(0 * app.cellWidth, 2 * app.cellHeight);
         app.fillCell(2 * app.cellWidth, 2 * app.cellHeight);
-        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
+
+        app.canvas.toDataURL(type, 1, (err, jpeg) => {
+            expect(jpeg).toMatchSnapshot();
+            done();
+        });
     });
 
     it("should tell you that the board is full", () => {
