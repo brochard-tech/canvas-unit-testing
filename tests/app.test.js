@@ -7,6 +7,7 @@ describe("Data tests", () => {
     /* CONSTRUCTION */
 
     let app;
+    const type = "image/webp";
 
     beforeAll(() => {
         const canvas = document.createElement("canvas");
@@ -137,7 +138,7 @@ describe("Data tests", () => {
     it("should render the board", () => {
         app.start();
 
-        expect(app.canvas.toDataURL()).toMatchSnapshot();
+        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
     });
 
     it("should render crosses on cells selected", () => {
@@ -146,7 +147,7 @@ describe("Data tests", () => {
         app.fillCell(0 * app.cellWidth, 1 * app.cellHeight, true);
         app.fillCell(2 * app.cellWidth, 1 * app.cellHeight, true);
         app.fillCell(1 * app.cellWidth, 2 * app.cellHeight, true);
-        expect(app.canvas.toDataURL()).toMatchSnapshot();
+        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
     });
 
     it("should fill the empty cells with circles", () => {
@@ -155,7 +156,7 @@ describe("Data tests", () => {
         app.fillCell(1 * app.cellWidth, 1 * app.cellHeight);
         app.fillCell(0 * app.cellWidth, 2 * app.cellHeight);
         app.fillCell(2 * app.cellWidth, 2 * app.cellHeight);
-        expect(app.canvas.toDataURL()).toMatchSnapshot();
+        expect(app.canvas.toDataURL(type)).toMatchSnapshot();
     });
 
     it("should tell you that the board is full", () => {
