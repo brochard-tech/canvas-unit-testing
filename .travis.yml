@@ -3,6 +3,8 @@ sudo: required
 before_install: sudo apt-get install libcairo2-dev libjpeg8-dev libpango1.0-dev libgif-dev build-essential g++
 env:
   - CXX=g++-4.8
+os:
+  - osx
 addons:
   apt:
     sources:
