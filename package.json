@@ -1,0 +1,39 @@
+{
+  "name": "canvas-unit-testing",
+  "version": "1.0.0",
+  "description": "An example of how to make unit testing with HTML5 Canvas",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jest",
+    "test:dev": "yarn test -- --updateSnapshot --watch"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "html"
+    ],
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "moduleDirectories": [
+      "node_modules"
+    ],
+    "testMatch": [
+      "**/tests/**/*.js"
+    ]
+  },
+  "repository": {
+    "url": "https://github.com/myvertigo/canvas-unit-testing.git",
+    "type": "git"
+  },
+  "author": "Christophe Brochard <christophe.brochard.prestataire@sfr.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "canvas": "^1.6.5",
+    "jest": "^20.0.4"
+  }
+}
